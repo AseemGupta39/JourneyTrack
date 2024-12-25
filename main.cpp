@@ -31,7 +31,14 @@ int main()
         cout << "10. Minimum Distance\n";
         cout << "11. Exit\n";
         cout << "Enter your choice: ";
-        cin >> choice;
+        // cin >> choice;
+
+        if (!(cin >> choice)) {
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+            cout << "Invalid input. Please enter a number. \n";
+            continue; // Retake the input
+        }
 
         cin.ignore(); // To ignore the leftover newline character from cin
 
@@ -131,7 +138,7 @@ int main()
 
         default:
             cout << "Invalid choice. Please try again." << endl;
-            choice = 12;
+            // choice = 12;
             break;
         }
     }
